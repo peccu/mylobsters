@@ -1,0 +1,44 @@
+# My Lobste.rs
+
+## WIP
+
+- use case
+  - gather feed / CLI
+    - update date avz.
+  - filter article / single window
+    - quickly pick up articles
+  - read article /multi windows
+    - consume picked articles
+  - evaluate article / multi windows
+    - good/bad
+  - categorize article / CLI
+    - with tags
+  - timer for defined consuming time
+- data
+  - feed sources
+    - rss
+    - article for rss
+    - url
+    - title
+    - last updated
+    - average update duration
+  - gathered articles
+    - url
+    - title
+    - source
+    - author
+    - fetched date
+    - cashed url
+    - domain
+    - favicon
+  - picked articles
+    - url
+    - good/bad by meta
+    - good/bad by contents
+    - evaluated datetime 2 date times
+- ui
+  - main
+  - setup github
+  - add feeds/page
+  - picking articles
+  - reading w/ evaluation
