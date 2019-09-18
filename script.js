@@ -102,51 +102,64 @@ Sqrl.definePartial('user', userTemplate);
 
 const template = `
 <div id="inside">
+  <ol class="stories list">
 {{each(options.json.items)}}
-  <li id="story_{{@this.id}}" data-shortid="{{@this.id}}" class="story">
-    <div class="story_liner h-entry">
-      <div class="voters">
-        <a class="upvoter" href="/login"></a>
-        <div class="score">{{@this.score}}</div>
-      </div>
-      <div class="details">
-        <span class="link h-cite u-repost-of">
-          <a class="u-url" href="{{@this.url}}">{{@this.title}}</a>
-        </span>
-        <span class="tags">
-{{each(@this.tags)}}
-          <a class="tag tag_programming" title="Use when every tag or no specific tag applies" href="/t/{{@this}}">{{@this}}</a>
-{{/each}}
-        </span>
-        <a class="domain" href="/search?order=newest&amp;q=domain:{{@this.domain}}">{{@this.domain}}</a>
-        <div class="byline">
-          {{include(user)/}}
-          <span title="{{@this.ts}}" class="">{{@this.ts | fromNow }}</span>
-          |
-          <a href="https://archive.is/{{@this.url | encodeURIComponent}}" rel="nofollow" target="_blank">cached</a>
-          <span class="comments_label">
-            |
-            <a href="/s/{{@this.id}}/{{@this.slug}}">{{@this.comment_count}} comments</a>
+    <li id="story_{{@this.id}}" data-shortid="{{@this.id}}" class="story">
+      <div class="story_liner h-entry">
+        <div class="voters">
+          <a class="upvoter" href="/login"></a>
+          <div class="score">{{@this.score}}</div>
+        </div>
+        <div class="details">
+          <span class="link h-cite u-repost-of">
+            <a class="u-url" href="{{@this.url}}">{{@this.title}}</a>
           </span>
+          <span class="tags">
+{{each(@this.tags)}}
+            <a class="tag tag_programming" title="Use when every tag or no specific tag applies" href="/t/{{@this}}">{{@this}}</a>
+{{/each}}
+            <a class="tag tag_pdf tag_is_media" title="Link to a PDF document" href="/t/pdf">pdf</a>
+            <a class="tag tag_ask tag_is_media" title="Ask Lobsters" href="/t/ask">ask</a>
+          </span>
+          <a class="domain" href="/search?order=newest&amp;q=domain:{{@this.domain}}">{{@this.domain}}</a>
+          <div class="byline">
+            {{include(user)/}}
+            <span title="{{@this.ts}}" class="">{{@this.ts | fromNow }}</span>
+            |
+            <a href="https://archive.is/{{@this.url | encodeURIComponent}}" rel="nofollow" target="_blank">cached</a>
+            <span class="comments_label">
+              |
+              <a href="/s/{{@this.id}}/{{@this.slug}}">{{@this.comment_count}} comments</a>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    <a href="/s/{{@this.id}}/{{@this.slug}}" class="mobile_comments " style="display: none;">
-      <span>{{@this.comment_count}}</span>
-    </a>
-  </li>
+      <a href="/s/{{@this.id}}/{{@this.slug}}" class="mobile_comments " style="display: none;">
+        <span>{{@this.comment_count}}</span>
+      </a>
+    </li>
 {{/each}}
+  </ol>
 </div>
 `;
 
 const toolbarhtml = `
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
-  <meta name="HandheldFriendly" content="true" />
-  <form onsubmit="next(); return false;">
-    <input type="text" id="url" value="https://google.com"/>
-    <button onclick="next(); return false;">next</button>
-  </form>
-  <div id="wrapper"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <title>My Lobsters</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <form onsubmit="next(); return false;">
+      <input type="text" id="title"/>
+      <input type="text" id="url" value="https://google.com"/>
+      <button onclick="add(); return false;">add</button>
+    </form>
+    <div id="wrapper"></div>
     <element-details>
       <span slot="element-name">template</span>
       <span slot="description">A mechanism for holding client-
@@ -154,28 +167,37 @@ const toolbarhtml = `
         loaded but may subsequently be instantiated during
         runtime using JavaScript.</span>
     </element-details>
-
-
-  <sc` + `ript>
-  const next = () => {
-    let url = document.querySelector('#url').value;
-    window.opener.nextUrl(url)
-  }
-  document.getElementById('wrapper').innerHTML = window.opener.render();
-  document.head.appendChild(window.opener.createParentStyle());
-
-  var ElementDetails = class extends HTMLElement {
-    constructor() {
-      super();
-      const template = window.opener.document
-        .getElementById('element-details-template')
-        .content;
-      const shadowRoot = this.attachShadow({mode: 'open'})
-        .appendChild(template.cloneNode(true));
-    }
-  };
-  customElements.define('element-details', ElementDetails);
-  </sc` + `ript>`;
+    <sc` + `ript>
+      const add = () => {
+        let title = document.querySelector('#title').value;
+        let url = document.querySelector('#url').value;
+        window.opener.addUrlOpen(url, title)
+      }
+      document.getElementById('wrapper').innerHTML = window.opener.render();
+      document.head.appendChild(window.opener.createParentStyle());
+      const setupOpenLink = () => {
+        const aTags = document.querySelectorAll('a.u-url');
+        Array.prototype.slice.call(aTags).map(tag=>tag.addEventListener('click', (e) => {
+          e.preventDefault();
+          (window.opener || window).openUrl(tag.href);
+        }));
+      };
+      setupOpenLink();
+      var ElementDetails = class extends HTMLElement {
+        constructor() {
+          super();
+          const template = window.opener.document
+            .getElementById('element-details-template')
+            .content;
+          const shadowRoot = this.attachShadow({mode: 'open'})
+            .appendChild(template.cloneNode(true));
+        }
+      };
+      customElements.define('element-details', ElementDetails);
+    </sc` + `ript>
+  </body>
+</html>
+`;
 
 const toolbarWidth = 300;
 const toolbarOpt = [
@@ -211,14 +233,18 @@ const commit = async jsonStr => {
   console.log('push finished');
 };
 
-const nextUrl = url => {
+var addUrlOpen = (url, title) => {
   console.log('url', url);
   let json = JSON.parse(localStorage.getItem('json'));
-  json.items.push({ title: '', url });
+  json.items.push({ title, url });
   localStorage.setItem('json', JSON.stringify(json) + '\n');
   commit(JSON.stringify(json, null, '  '));
 
   initFromLocalStorage();
+  openUrl(url);
+};
+
+var openUrl = url => {
   var readerOpt = [
     'height=' + screen.height,
     'width=' + (screen.width - toolbarWidth),
