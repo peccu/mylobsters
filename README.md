@@ -15,14 +15,14 @@
     - with tags
   - timer for defined consuming time
 - data
-  - feed sources
+  - feed sources (`feeds.json`)
     - rss
     - article for rss
     - url
     - title
     - last updated
     - average update duration
-  - gathered articles
+  - gathered articles (`articles.json`)
     - url
     - title
     - source
@@ -31,7 +31,7 @@
     - cashed url
     - domain
     - favicon
-  - picked articles
+  - picked articles (`picked.json`)
     - url
     - good/bad by meta
     - good/bad by contents
