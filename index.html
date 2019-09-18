@@ -2,12 +2,12 @@
 <html lang="en" >
   <head>
     <meta charset="UTF-8">
-    <title>Open two windows and control from one.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <title>My Lobsters</title>
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
-    <meta name="HandheldFriendly" content="true" />
     <p><button onclick="start(); return false;">START</button></p>
     <p>Repo: <input type="text" id="repo" placeholder="Clone URL"/></p>
     <p>Token: <input type="text" id="token" placeholder="token"/></p>
@@ -62,7 +62,6 @@
         loaded but may subsequently be instantiated during
         runtime using JavaScript.</span>
     </element-details>
-
     <script>
      var ElementDetails = class extends HTMLElement {
        constructor() {
@@ -84,6 +83,5 @@
     <script src='https://unpkg.com/squirrelly@latest/dist/squirrelly.min.js'></script>
     <script src='https://momentjs.com/downloads/moment.min.js'></script>
     <script  src="./script.js"></script>
-
   </body>
 </html>
