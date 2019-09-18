@@ -1,0 +1,39 @@
+body {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua",
+               Georgia, serif;
+}
+/* from dev.to */
+button {
+  font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed",
+               "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed",
+               "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
+               "HelveticaNeue", "Helvetica Neue", "TeXGyreHerosCnBold", "Helvetica",
+               "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif;
+  font-stretch: condensed;
+  background: #333333;
+  color: white;
+  border: 0px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 3px;
+  padding: 5px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* from lobste.rs */
+div#wrapper {
+  padding: 0;
+  padding-bottom: 2em;
+  margin: 0;
+  min-width: 100%;
+  max-width: 100%;
+}
+div#inseide {
+  font-size: 10pt;
+  color: #333;
+  line-height: 1.45em;
+}
