@@ -1,0 +1,3 @@
+const initEruda = () => {
+  eruda.init();
+};
