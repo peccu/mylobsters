@@ -112,7 +112,7 @@ const start = () => {
       let val = both[1];
       acc[key] = val;
       return acc;
-    }, {}));;
-  document.write(`title = #{param['title']}<br/>url = #{param['url']}`);
+    }, {}));
+  document.write(`title = ${param['title']}<br/>url = ${param['url']}`);
 };
 start();
