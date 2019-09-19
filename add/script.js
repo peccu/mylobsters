@@ -102,7 +102,8 @@ const start = () => {
     document.write(`You don't specify title and url.`);
     return;
   }
-  let param = search
+  const defaultParam = {title: '', url: ''};
+  let param = Object.assign({}, defaultParam, search
     .slice(1)
     .split('&')
     .reduce((acc, pair) => {
@@ -111,7 +112,7 @@ const start = () => {
       let val = both[1];
       acc[key] = val;
       return acc;
-    }, {}))
+    }, {}));;
   document.write(`title = #{param['title']}<br/>url = #{param['url']}`);
 };
 start();
