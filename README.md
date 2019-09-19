@@ -14,6 +14,7 @@
   - categorize article / CLI
     - with tags
   - timer for defined consuming time
+  - add feed source
 - data
   - feed sources (`feeds.json`)
     - rss
