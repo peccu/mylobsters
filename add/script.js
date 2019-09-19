@@ -97,6 +97,21 @@ const init = () => {
 init();
 
 const start = () => {
-  document.write('test');
+  let search = location.search;
+  if(!search || !search.match(/^\?.*=.*/)){
+    document.write(`You don't specify title and url.`);
+    return;
+  }
+  let param = search
+    .slice(1)
+    .split('&')
+    .reduce((acc, pair) => {
+      let both = pair.split('=');
+      let key = both[0];
+      let val = both[1];
+      acc[key] = val;
+      return acc;
+    }, {}))
+  document.write(`title = #{param['title']}<br/>url = #{param['url']}`);
 };
 start();
