@@ -1,6 +1,5 @@
 const initEruda = () => {
   eruda.init();
-  eruda.add(erudaCode);
 };
 /*
 get title and url from query parameter
