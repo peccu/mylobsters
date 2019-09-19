@@ -92,7 +92,7 @@ const init = () => {
   initEruda();
   initFromLocalStorage();
   initGit();
-  initRepo();
+  // initRepo();
 };
 init();
 
