@@ -93,23 +93,38 @@ const init = () => {
 };
 init();
 
+// encodeURIComponent(location.origin + location.pathname) + '?' + encodeURIComponent(
+//   JSON.stringify(
+//     Array.prototype.slice.call(
+//       document.querySelectorAll('link[rel="alternate"]')).map(e=> {
+//         return {
+//           type: e.type.split('/')[1],
+//           title: e.title,
+//           url: e.href
+//         };
+//       })));
+const bookmarklet = `<a href="javascript:(function()%7Bwindow.open('${encodeURIComponent(location.origin + location.pathname)}%3F'%20%2B%20encodeURIComponent(%0A%20%20JSON.stringify(%0A%20%20%20%20Array.prototype.slice.call(%0A%20%20%20%20%20%20document.querySelectorAll('link%5Brel%3D%22alternate%22%5D')).map(e%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20return%20%7B%0A%20%20%20%20%20%20%20%20%20%20type%3A%20e.type.split('%2F')%5B1%5D%2C%0A%20%20%20%20%20%20%20%20%20%20title%3A%20e.title%2C%0A%20%20%20%20%20%20%20%20%20%20url%3A%20e.href%0A%20%20%20%20%20%20%20%20%7D%7D))))%3B%7D)()%3B">bookmarklet</a>`;
+const usage = `You don't specify title and url.<br/>
+You can use this ${bookmarklet}.`;
+
 const start = () => {
   let search = location.search;
-  if(!search || !search.match(/^\?.*=.*/)){
-    document.write(`You don't specify title and url.`);
+  if(!search){
+    document.write(usage);
+    return;
+  }
+  let params = [];
+  try{
+    params = JSON.parse(decodeURIComponent(search.slice(1)));
+  }catch(e){
+    document.write(usage);
+    document.write(e);
     return;
   }
   const defaultParam = {title: '', url: ''};
-  let param = Object.assign({}, defaultParam, search
-    .slice(1)
-    .split('&')
-    .reduce((acc, pair) => {
-      let both = pair.split('=');
-      let key = both[0];
-      let val = both[1];
-      acc[key] = val;
-      return acc;
-    }, {}));
-  document.write(`title = ${param['title']}<br/>url = ${param['url']}`);
+  params.map(e => {
+    let param = Object.assign({}, defaultParam, e);
+    document.write(`title = ${param['title']}<br/>url = ${param['url']}<br/>`);
+  });
 };
 start();
