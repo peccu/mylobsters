@@ -190,7 +190,6 @@ var openUrl = url => {
   toolbar.focus();
 };
 
-
 var createParentStyle = () => {
   const style = document.createElement('style');
   style.innerHTML = document.querySelector('style').innerHTML;
