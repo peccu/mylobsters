@@ -38,7 +38,7 @@ const toolbarhtml = `
     <script src="https://unpkg.com/squirrelly@latest/dist/squirrelly.min.js"></script>
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <script src="./api/articles.js"></script>
-    <script src="../components/lob_item.js"></script>
+    <script src="./components/lob_item.js"></script>
   </head>
   <body>
     <form onsubmit="next(); return false;">
