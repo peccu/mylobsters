@@ -19,7 +19,7 @@
         </div>
         <div class="details">
           <span class="link h-cite u-repost-of">
-            <a class="u-url" href="{{@this.url}}">{{@this.title}}</a>
+            <a class="u-url" href="{{@this.url}}">{{@this.title || "no title"}}</a>
           </span>
           <span class="tags">
 {{each(@this.tags)}}
