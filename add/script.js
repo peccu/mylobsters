@@ -118,7 +118,7 @@ const start = () => {
     params = JSON.parse(decodeURIComponent(search.slice(1)));
   }catch(e){
     document.write(usage);
-    document.write(e);
+    document.write('<br/>' + e);
     return;
   }
   const defaultParam = {title: '', url: ''};
