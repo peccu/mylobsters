@@ -53,13 +53,6 @@ const toolbarhtml = `
         </ol>
       </div>
     </div>
-    <element-details>
-      <span slot="element-name">template</span>
-      <span slot="description">A mechanism for holding client-
-        side content that is not to be rendered when a page is
-        loaded but may subsequently be instantiated during
-        runtime using JavaScript.</span>
-    </element-details>
     <sc` + `ript>
       const add = () => {
         let title = document.querySelector('#title').value;
@@ -75,17 +68,6 @@ const toolbarhtml = `
         }));
       };
       setupOpenLink();
-      var ElementDetails = class extends HTMLElement {
-        constructor() {
-          super();
-          const template = window.opener.document
-            .getElementById('element-details-template')
-            .content;
-          const shadowRoot = this.attachShadow({mode: 'open'})
-            .appendChild(template.cloneNode(true));
-        }
-      };
-      customElements.define('element-details', ElementDetails);
     </sc` + `ript>
   </body>
 </html>
