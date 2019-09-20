@@ -1,6 +1,3 @@
-const initEruda = () => {
-  eruda.init();
-};
 /*
 get title and url from query parameter
 if no info
