@@ -54,36 +54,17 @@
     return content;
   }
 
-  class MylobItems extends HTMLElement {
-    static get observedAttributes() {
-      return [];
-    }
-
+  const MylobItems = class extends HTMLElement {
     connectedCallback() {
-      debugger;
-      this.log('connected');
-      this.render();
-    }
-
-    attributeChangedCallback(attr, oldValue, newValue) {
-      this.log('attributeChanged');
-      this.render();
-    }
-
-    render() {
       let json = getArticles();
       this.log('articles', json);
       this.innerHTML = render(json);
     }
 
-    disconnectedCallback() {
-      this.log('disconnected');
-    }
-
     log(...args) {
       console.log('🖼️ mylob-items', ...args);
     }
-  }
+  };
 
   window.customElements.define('mylob-items', MylobItems);
 
