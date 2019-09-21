@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "live-server --ignore=.git  --host=$(ifconfig|grep inet|grep broadcast|awk '{ print $2 }') ./build"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
