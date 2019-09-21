@@ -3,6 +3,8 @@
 ## WIP
 
 - use case
+  - setup git repos
+  - add feed source
   - gather feed / CLI
     - update date avz.
   - filter article / single window
@@ -14,7 +16,6 @@
   - categorize article / CLI
     - with tags
   - timer for defined consuming time
-  - add feed source
 - data
   - feed sources (`feeds.json`)
     - rss
