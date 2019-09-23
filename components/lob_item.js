@@ -1,3 +1,36 @@
+// https://dev.to/pdesjardins90/web-components-fundamentals-part-2-486j
+// const template = document.createElement('template')
+//  template.innerHTML = `
+//   <style>
+//     :host {
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//     }
+
+//     span {
+//       width: 50%;
+//       height: 4px;
+//       background-color: blue;
+//     }
+//   </style>
+
+//   <span></span>
+//   <slot></slot>
+// `
+
+// export class MyCoolDivElement extends HTMLElement {
+//   constructor() {
+//     super();
+//     this.attachShadow({ mode: 'open' });
+//     const templateClone = template.content.cloneNode(true);
+//     this.shadowRoot.appendChild(templateClone);
+//   }
+// }
+
+// window.customElements.define('my-cool-div', MyCoolDivElement);
+
 (function fragments() {
 
   Sqrl.defineFilter('encodeURIComponent', encodeURIComponent);
