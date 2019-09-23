@@ -13,32 +13,32 @@
     return content;
   }
 
-    const getItem = localStorage.getItem;
-	
+  const getItem = localStorage.getItem;
+
   const GitConfig = class extends HTMLElement {
     connectedCallback() {
-	let json = {
-	    repo: getItem('repo'),
-	    token: getItem('token'),
-	    author: getItem('author'),
-	    mail: getItem('mail')
-	};
+      let json = {
+        repo: getItem('repo'),
+        token: getItem('token'),
+        author: getItem('author'),
+        mail: getItem('mail')
+      };
       this.log('stored git config', json);
       this.innerHTML = render(json);
     }
 
-      saveConf(){
-	  ['repo', 'token', 'author', 'mail'].map(key = {
-	      let val = document.getElementById(key);
-	      if(!val){
-		  return;
-	      }
-	      localStorage.setItem(key, val);
-	  });
-      }
+    saveConf(){
+      ['repo', 'token', 'author', 'mail'].map(key => {
+        let val = document.getElementById(key);
+        if(!val){
+          return;
+        }
+        localStorage.setItem(key, val);
+      });
+    }
 
     log(...args) {
-      console.log('🖼️ mit-config',..args);
+      console.log('🖼️ mit-config',...args);
     }
   };
 
