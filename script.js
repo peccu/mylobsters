@@ -13,10 +13,8 @@ const initFromLocalStorage = () => {
   ['repo', 'token', 'author', 'mail'].map(loadValue);
   loadConf('innerText')('json');
 };
+// open git config button
 
-const resetfs = () => {
-  window.fs = new LightningFS('fs', { wipe: true });
-};
 
 const init = () => {
   initEruda();
