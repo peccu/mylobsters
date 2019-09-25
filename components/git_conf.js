@@ -5,8 +5,8 @@ template.innerHTML = `
     <p>Token: <input type="text" id="token" placeholder="token"/></p>
     <p>Author: <input type="text" id="author" placeholder="commit author"/></p>
     <p>Mail: <input type="text" id="mail" placeholder="commit mail"/></p>
-    <p><button id="#saveConf">SAVE CONFIG</button></p>
-    <p><button id="#resetfs">RESET FS</button></p>
+    <p><button id="saveConf">SAVE CONFIG</button></p>
+    <p><button id="resetfs">RESET FS</button></p>
 `;
 
 const storeKeys = ['repo', 'token', 'author', 'mail'];
@@ -32,22 +32,26 @@ class MyCustomeElement extends HTMLElement {
 
   attachEvents(){
     ['saveConf', 'resetfs'].map(id => {
-      this.shadowRoot.querySelector('#' + id).addEventListener('click', this[id]);
+      this.shadowRoot.querySelector('#' + id).addEventListener('click', this[id].bind(this));
     });
   }
 
   saveConf(e){
+    this.log('saveConf');
+    let elm = this;
     e.preventDefault();
     e.stopPropagation();
     storeKeys.map(key => {
-      let val = document.getElementById(key);
-      if(!val){
+      let input = elm.shadowRoot.getElementById(key);
+      if(!input || !input.value){
         return;
       }
-      localStorage.setItem(key, val);
+      localStorage.setItem(key, input.value);
     });
+    this.shadowRoot.innerHTML = 'saved.';
   }
-  resetfs(){
+  resetfs(e){
+    this.log('resetfs');
     window.fs = new LightningFS('fs', { wipe: true });
   };
 
