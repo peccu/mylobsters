@@ -14,7 +14,10 @@
     <p>Author: <input type="text" id="author" placeholder="commit author"/></p>
     <p>Mail: <input type="text" id="mail" placeholder="commit mail"/></p>
     <p><button onclick="initRepo(); return false;">INIT REPO</button></p>
-    <p><button onclick="resetfs(); return false;">RESET FS</button></p>
+    <p><button onclick="repoConf(); return false;">REPO CONFIG</button></p>
+    <hr/>
+    <git-config>git config</git-config>
+
     <pre id="json"></pre>
 
     <template id="element-details-template">
@@ -84,5 +87,7 @@
     <script src="./toolbar.js"></script>
     <script src="./api/articles.js"></script>
     <script src="./script.js"></script>
+    <script type="module" src="./components/simple.js"></script>
+    <super-span>star<span>green</span></super-span>
   </body>
 </html>

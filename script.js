@@ -13,10 +13,18 @@ const initFromLocalStorage = () => {
   ['repo', 'token', 'author', 'mail'].map(loadValue);
   loadConf('innerText')('json');
 };
-
-const resetfs = () => {
-  window.fs = new LightningFS('fs', { wipe: true });
+// open git config button
+var repoConf = () => {
+    const script = document.createElement('script');
+    script.src = './components/git_conf.js';
+    script.onload=() => {
+	console.log('called');
+	const custom = document.createElement('git-config');
+	document.body.appendChild(custom);
+    };
+    document.body.appendChild(script);
 };
+// window.repoConf = repoConf;
 
 const init = () => {
   initEruda();

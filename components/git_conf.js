@@ -5,6 +5,7 @@
     <p>Author: <input type="text" id="author" placeholder="commit author" value="{{options.author}}"/></p>
     <p>Mail: <input type="text" id="mail" placeholder="commit mail" value="{{options.mail}}"/></p>
     <p><button onclick="saveConf(); return false;">SAVE CONFIG</button></p>
+    <p><button onclick="resetfs(); return false;">RESET FS</button></p>
 `;
 
   function render(json) {
@@ -13,15 +14,13 @@
     return content;
   }
 
-  const getItem = localStorage.getItem;
-
   const GitConfig = class extends HTMLElement {
     connectedCallback() {
       let json = {
-        repo: getItem('repo'),
-        token: getItem('token'),
-        author: getItem('author'),
-        mail: getItem('mail')
+        repo: localStorage.getItem('repo'),
+        token: localStorage.getItem('token'),
+        author: localStorage.getItem('author'),
+        mail: localStorage.getItem('mail')
       };
       this.log('stored git config', json);
       this.innerHTML = render(json);

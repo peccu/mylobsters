@@ -1,4 +1,8 @@
 (function git(){
+  const resetfs = () => {
+    window.fs = new LightningFS('fs', { wipe: true });
+  };
+
   const initGit = () => {
     // window.fs = new LightningFS('fs', { wipe: true });
     window.fs = new LightningFS('fs');
