@@ -1,46 +1,59 @@
-(function fragments() {
-  const template = `
-    <p>Repo: <input type="text" id="repo" placeholder="Clone URL" value="{{options.repo}}"/></p>
-    <p>Token: <input type="text" id="token" placeholder="token" value="{{options.token}}"/></p>
-    <p>Author: <input type="text" id="author" placeholder="commit author" value="{{options.author}}"/></p>
-    <p>Mail: <input type="text" id="mail" placeholder="commit mail" value="{{options.mail}}"/></p>
-    <p><button onclick="saveConf(); return false;">SAVE CONFIG</button></p>
-    <p><button onclick="resetfs(); return false;">RESET FS</button></p>
+const tagName = 'git-config';
+const template = document.createElement('template');
+template.innerHTML = `
+    <p>Repo: <input type="text" id="repo" placeholder="Clone URL"/></p>
+    <p>Token: <input type="text" id="token" placeholder="token"/></p>
+    <p>Author: <input type="text" id="author" placeholder="commit author"/></p>
+    <p>Mail: <input type="text" id="mail" placeholder="commit mail"/></p>
+    <p><button id="#saveConf">SAVE CONFIG</button></p>
+    <p><button id="#resetfs">RESET FS</button></p>
 `;
 
-  function render(json) {
-    let content = Sqrl.Render(template, {json});
-    console.log('rendered', content);
-    return content;
+const storeKeys = ['repo', 'token', 'author', 'mail'];
+
+class MyCustomeElement extends HTMLElement {
+  connectedCallback(){
+    if(this.shadowRoot){
+      return;
+    }
+    this.attachShadow({mode: 'open'});
+    let clone = template.content.cloneNode(true);
+    const child = this.renderNode(clone);
+    this.shadowRoot.appendChild(child);
+    this.attachEvents();
   }
 
-  const GitConfig = class extends HTMLElement {
-    connectedCallback() {
-      let json = {
-        repo: localStorage.getItem('repo'),
-        token: localStorage.getItem('token'),
-        author: localStorage.getItem('author'),
-        mail: localStorage.getItem('mail')
-      };
-      this.log('stored git config', json);
-      this.innerHTML = render(json);
-    }
+  renderNode(clone){
+    storeKeys.map(key => {
+      clone.querySelector('#' + key).value = localStorage.getItem(key) || '';
+    });
+    return clone;
+  }
 
-    saveConf(){
-      ['repo', 'token', 'author', 'mail'].map(key => {
-        let val = document.getElementById(key);
-        if(!val){
-          return;
-        }
-        localStorage.setItem(key, val);
-      });
-    }
+  attachEvents(){
+    ['saveConf', 'resetfs'].map(id => {
+      this.shadowRoot.querySelector('#' + id).addEventListener('click', this[id]);
+    });
+  }
 
-    log(...args) {
-      console.log('🖼️ mit-config',...args);
-    }
+  saveConf(e){
+    e.preventDefault();
+    e.stopPropagation();
+    storeKeys.map(key => {
+      let val = document.getElementById(key);
+      if(!val){
+        return;
+      }
+      localStorage.setItem(key, val);
+    });
+  }
+  resetfs(){
+    window.fs = new LightningFS('fs', { wipe: true });
   };
 
-  window.customElements.define('git-config', GitConfig);
-
-}());
+  log(...args) {
+    console.log('🖼️ git-config',...args);
+  }
+};
+const register = () => customElements.define(tagName, MyCustomeElement);
+window.WebComponents ? window.WebComponents.waitFor(register) : register();
