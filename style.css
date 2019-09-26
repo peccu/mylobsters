@@ -1,3 +1,14 @@
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./assets/SourceCodePro-Regular.ttf.woff2') format('woff2');
+}
+pre {
+  font-family: 'Source Code Pro', monospace;
+}
+
 body {
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua",
                Georgia, serif;
