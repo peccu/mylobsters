@@ -12,16 +12,17 @@
       dir: window.dir,
       corsProxy: 'https://cors.isomorphic-git.org'
     };
-    let repo = document.querySelector('#repo').value;
+      let repo = localStorage.getItem('repo');
+//    let repo = document.querySelector('#repo').value;
     if (repo != '') {
       option.url = repo;
-      localStorage.setItem('repo', repo);
+//      localStorage.setItem('repo', repo);
     }
-
-    let token = document.querySelector('#token').value;
+      let token = localStorage.getItem('token');
+//    let token = document.querySelector('#token').value;
     if (token != '') {
       option.token = token;
-      localStorage.setItem('token', token);
+//      localStorage.setItem('token', token);
     }
     return option;
   };
@@ -31,9 +32,11 @@
     option.ref = 'master';
     option.singleBranch = true;
     option.depth = 1;
+    // TODO catch error and call repoConf
     await window.git.clone(option);
   };
 
+    // TODO clone or pull
   const initRepo = async () => {
     try {
       await window.pfs.lstat(`${window.dir}/.git`);
@@ -52,6 +55,8 @@
       await clone();
     }
 
+      // TODO split here
+      // load database
     console.log(await window.pfs.readdir(window.dir));
     // await git.log({dir})
     let json = await window.pfs.readFile(`${window.dir}/storage.json`, 'utf8');
