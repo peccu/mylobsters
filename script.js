@@ -14,17 +14,6 @@ const initFromLocalStorage = () => {
   loadConf('innerText')('json');
 };
 
-var repoConf = () => {
-  const script = document.createElement('script');
-  script.type = 'module';
-  script.src = './components/git_conf.js';
-  script.onload= () => {
-    const custom = document.createElement('git-config');
-    document.body.appendChild(custom);
-  };
-  document.body.appendChild(script);
-};
-
 const init = () => {
   initEruda();
   // initFromLocalStorage();

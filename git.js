@@ -12,17 +12,13 @@
       dir: window.dir,
       corsProxy: 'https://cors.isomorphic-git.org'
     };
-      let repo = localStorage.getItem('repo');
-//    let repo = document.querySelector('#repo').value;
+    let repo = localStorage.getItem('repo');
     if (repo != '') {
       option.url = repo;
-//      localStorage.setItem('repo', repo);
     }
-      let token = localStorage.getItem('token');
-//    let token = document.querySelector('#token').value;
+    let token = localStorage.getItem('token');
     if (token != '') {
       option.token = token;
-//      localStorage.setItem('token', token);
     }
     return option;
   };
@@ -36,7 +32,7 @@
     await window.git.clone(option);
   };
 
-    // TODO clone or pull
+  // TODO clone or pull
   const initRepo = async () => {
     try {
       await window.pfs.lstat(`${window.dir}/.git`);
@@ -55,8 +51,8 @@
       await clone();
     }
 
-      // TODO split here
-      // load database
+    // TODO split here
+    // load database
     console.log(await window.pfs.readdir(window.dir));
     // await git.log({dir})
     let json = await window.pfs.readFile(`${window.dir}/storage.json`, 'utf8');
@@ -64,6 +60,18 @@
     initFromLocalStorage();
   };
 
+  var repoConf = () => {
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = './components/git_conf.js';
+    script.onload= () => {
+      const custom = document.createElement('git-config');
+      document.body.appendChild(custom);
+    };
+    document.body.appendChild(script);
+  };
+
+  window.repoConf = repoConf;
   window.initGit = initGit;
   window.initRepo = initRepo;
 }());
