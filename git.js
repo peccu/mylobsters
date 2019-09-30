@@ -56,11 +56,12 @@
 	repoConf();
       }
     }
+    loadStorage();
+  };
 
-    // TODO split here
+  const loadStorage = () => {
     // load database
     console.log(await window.pfs.readdir(window.dir));
-    // await git.log({dir})
     let json = await window.pfs.readFile(`${window.dir}/storage.json`, 'utf8');
     localStorage.setItem('json', json);
     initFromLocalStorage();
