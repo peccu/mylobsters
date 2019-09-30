@@ -7,16 +7,13 @@ const loadConf = attr => {
     document.querySelector('#' + key + 'label')[attr] = val;
   };
 };
-const loadValue = loadConf('value');
 
 const initFromLocalStorage = () => {
-  ['repo', 'token', 'author', 'mail'].map(loadValue);
   loadConf('innerText')('json');
 };
 
 const init = () => {
   initEruda();
-  // initFromLocalStorage();
   cloneOrPullRepo();
 };
 init();
