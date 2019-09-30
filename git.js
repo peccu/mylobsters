@@ -31,7 +31,7 @@
     await window.git.clone(option);
   };
 
-  const cloneOrPullRepo = async () => {
+  var cloneOrPullRepo = async () => {
     if(!window.dir){
       initGit();
     }
