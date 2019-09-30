@@ -28,18 +28,19 @@
     option.ref = 'master';
     option.singleBranch = true;
     option.depth = 1;
-    // TODO catch error and call repoConf
     await window.git.clone(option);
   };
 
-  // TODO clone or pull
-  const initRepo = async () => {
+  const cloneOrPullRepo = async () => {
+    if(!window.dir){
+      initGit();
+    }
     try {
       await window.pfs.lstat(`${window.dir}/.git`);
       console.log('now pull');
       let option = gitOption();
       await window.git.pull(option);
-    } catch (err) {
+    }catch(err){
       // console.log(err);
       try {
         await window.pfs.lstat(window.dir);
@@ -48,7 +49,12 @@
         console.log('made dir');
       }
       console.log('clone');
-      await clone();
+      try {
+	await clone();
+      }catch(err){
+	console.log('cant clone', err);
+	repoConf();
+      }
     }
 
     // TODO split here
@@ -72,6 +78,6 @@
   };
 
   window.repoConf = repoConf;
-  window.initGit = initGit;
-  window.initRepo = initRepo;
+  // window.initGit = initGit;
+  window.cloneOrPullRepo = cloneOrPullRepo;
 }());

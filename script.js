@@ -17,8 +17,7 @@ const initFromLocalStorage = () => {
 const init = () => {
   initEruda();
   // initFromLocalStorage();
-  // initGit();
-  // initRepo();
+  cloneOrPullRepo();
 };
 init();
 
