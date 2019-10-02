@@ -55,6 +55,6 @@
     font-family: 'Waiting for the Sunrise', cursive;
     `.split('\n').map(l=>{
       let m=l.match(/'(.*)'/);
-      return m || m[1];
+      return m && m[1];
     }).filter(f=>f);
 })();
