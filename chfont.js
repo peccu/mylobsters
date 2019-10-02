@@ -57,4 +57,8 @@
       let m=l.match(/'(.*)'/);
       return m && m[1];
     }).filter(f=>f);
-})();
+
+  const pickedFont = fonts[Math.floor(Math.random()*fonts.length)];
+  console.log('picked font is', pickedFont);
+  document.body.style.fontFamily = `'${pickedFont}', cursive`;
+}());
