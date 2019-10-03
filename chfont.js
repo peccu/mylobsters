@@ -58,4 +58,5 @@
   const pickedFont = fonts[Math.floor(Math.random()*fonts.length)];
   console.log('picked font is', pickedFont);
   document.body.style.fontFamily = `'${pickedFont}', cursive`;
+  document.getElementById('fontFamily').innerText = pickedFont;
 }());
