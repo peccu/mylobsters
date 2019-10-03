@@ -50,10 +50,10 @@
       }
       console.log('clone');
       try {
-	await clone();
+        await clone();
       }catch(err){
-	console.log('cant clone', err);
-	repoConf();
+        console.log('cant clone', err);
+        repoConf();
       }
     }
     loadStorage();
