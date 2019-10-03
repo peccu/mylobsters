@@ -1,62 +1,59 @@
 (function(){
-  const fonts = `
-    font-family: 'Aladin', cursive;
-    font-family: 'Amatic SC', cursive;
-    font-family: 'Annie Use Your Telescope', cursive;
-    font-family: 'Architects Daughter', cursive;
-    font-family: 'Bad Script', cursive;
-    font-family: 'Berkshire Swash', cursive;
-    font-family: 'Butterfly Kids', cursive;
-    font-family: 'Caveat', cursive;
-    font-family: 'Charm', cursive;
-    font-family: 'Chilanka', cursive;
-    font-family: 'Coming Soon', cursive;
-    font-family: 'Condiment', cursive;
-    font-family: 'Crafty Girls', cursive;
-    font-family: 'Dekko', cursive;
-    font-family: 'Delius', cursive;
-    font-family: 'Delius Swash Caps', cursive;
-    font-family: 'Delius Unicase', cursive;
-    font-family: 'Eagle Lake', cursive;
-    font-family: 'Felipa', cursive;
-    font-family: 'Fondamento', cursive;
-    font-family: 'Gaegu', cursive;
-    font-family: 'Gamja Flower', cursive;
-    font-family: 'Give You Glory', cursive;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-family: 'Gochi Hand', cursive;
-    font-family: 'Handlee', cursive;
-    font-family: 'Hi Melody', cursive;
-    font-family: 'Indie Flower', cursive;
-    font-family: 'Itim', cursive;
-    font-family: 'Kalam', cursive;
-    font-family: 'Kavivanar', cursive;
-    font-family: 'Lakki Reddy', cursive;
-    font-family: 'League Script', cursive;
-    font-family: 'Loved by the King', cursive;
-    font-family: 'Mali', cursive;
-    font-family: 'Mansalva', cursive;
-    font-family: 'Merienda', cursive;
-    font-family: 'Molle', cursive;
-    font-family: 'Neucha', cursive;
-    font-family: 'Pangolin', cursive;
-    font-family: 'Patrick Hand', cursive;
-    font-family: 'Patrick Hand SC', cursive;
-    font-family: 'Quintessential', cursive;
-    font-family: 'Schoolbell', cursive;
-    font-family: 'Sedgwick Ave', cursive;
-    font-family: 'Shadows Into Light', cursive;
-    font-family: 'Shadows Into Light Two', cursive;
-    font-family: 'Sue Ellen Francisco', cursive;
-    font-family: 'Sunshiney', cursive;
-    font-family: 'Swanky and Moo Moo', cursive;
-    font-family: 'The Girl Next Door', cursive;
-    font-family: 'Tillana', cursive;
-    font-family: 'Waiting for the Sunrise', cursive;
-    `.split('\n').map(l=>{
-      let m=l.match(/'(.*)'/);
-      return m && m[1];
-    }).filter(f=>f);
+  const fonts = [
+    'Aladin',
+    'Amatic SC',
+    'Annie Use Your Telescope',
+    'Architects Daughter',
+    'Bad Script',
+    'Berkshire Swash',
+    'Butterfly Kids',
+    'Caveat',
+    'Charm',
+    'Chilanka',
+    'Coming Soon',
+    'Condiment',
+    'Crafty Girls',
+    'Dekko',
+    'Delius',
+    'Delius Swash Caps',
+    'Delius Unicase',
+    'Eagle Lake',
+    'Felipa',
+    'Fondamento',
+    'Gaegu',
+    'Gamja Flower',
+    'Give You Glory',
+    'Gloria Hallelujah',
+    'Gochi Hand',
+    'Handlee',
+    'Hi Melody',
+    'Indie Flower',
+    'Itim',
+    'Kalam',
+    'Kavivanar',
+    'Lakki Reddy',
+    'League Script',
+    'Loved by the King',
+    'Mali',
+    'Mansalva',
+    'Merienda',
+    'Molle',
+    'Neucha',
+    'Pangolin',
+    'Patrick Hand',
+    'Patrick Hand SC',
+    'Quintessential',
+    'Schoolbell',
+    'Sedgwick Ave',
+    'Shadows Into Light',
+    'Shadows Into Light Two',
+    'Sue Ellen Francisco',
+    'Sunshiney',
+    'Swanky and Moo Moo',
+    'The Girl Next Door',
+    'Tillana',
+    'Waiting for the Sunrise'
+  ];
 
   const pickedFont = fonts[Math.floor(Math.random()*fonts.length)];
   console.log('picked font is', pickedFont);
