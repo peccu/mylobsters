@@ -1,4 +1,5 @@
 (function(){
+  // https://fonts.google.com/selection?category=Handwriting&selection.family=Aladin%7CAmatic+SC%7CAnnie+Use+Your+Telescope%7CArchitects+Daughter%7CBad+Script%7CBerkshire+Swash%7CButterfly+Kids%7CCaveat%7CCharm%7CChilanka%7CComing+Soon%7CCondiment%7CCrafty+Girls%7CDekko%7CDelius%7CDelius+Swash+Caps%7CDelius+Unicase%7CEagle+Lake%7CFelipa%7CFondamento%7CGaegu%7CGamja+Flower%7CGive+You+Glory%7CGloria+Hallelujah%7CGochi+Hand%7CHandlee%7CHi+Melody%7CIndie+Flower%7CItim%7CKalam%7CKavivanar%7CLakki+Reddy%7CLeague+Script%7CLoved+by+the+King%7CMali%7CMansalva%7CMerienda%7CMolle:400i%7CNeucha%7CPangolin%7CPatrick+Hand%7CPatrick+Hand+SC%7CQuintessential%7CSchoolbell%7CSedgwick+Ave%7CShadows+Into+Light%7CShadows+Into+Light+Two%7CSue+Ellen+Francisco%7CSunshiney%7CSwanky+and+Moo+Moo%7CThe+Girl+Next+Door%7CTillana%7CWaiting+for+the+Sunrise
   const fonts = [
     'Aladin',
     'Amatic SC',
