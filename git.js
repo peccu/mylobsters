@@ -31,7 +31,7 @@
     await window.git.clone(option);
   };
 
-  var cloneOrPullRepo = async () => {
+  var cloneOrPullRepo = async (cb) => {
     if(!window.dir){
       initGit();
     }
@@ -56,15 +56,15 @@
         repoConf();
       }
     }
-    loadStorage();
+    loadStorage(cb);
   };
 
-  const loadStorage = async () => {
+  const loadStorage = async (cb) => {
     // load database
     console.log(await window.pfs.readdir(window.dir));
     let json = await window.pfs.readFile(`${window.dir}/storage.json`, 'utf8');
     localStorage.setItem('json', json);
-    initFromLocalStorage();
+    cb();
   };
 
   var repoConf = () => {
