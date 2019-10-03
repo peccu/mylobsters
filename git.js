@@ -59,7 +59,7 @@
     loadStorage();
   };
 
-  const loadStorage = () => {
+  const loadStorage = async () => {
     // load database
     console.log(await window.pfs.readdir(window.dir));
     let json = await window.pfs.readFile(`${window.dir}/storage.json`, 'utf8');
