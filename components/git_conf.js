@@ -2,7 +2,7 @@ const tagName = 'git-config';
 const template = document.createElement('template');
 template.innerHTML = `
     <p>Repo: <input type="text" id="repo" placeholder="Clone URL"/></p>
-    <p>Token: <input type="text" id="token" placeholder="token"/></p>
+    <p>Token: <input data-private type="text" id="token" placeholder="token"/></p>
     <p>Author: <input type="text" id="author" placeholder="commit author"/></p>
     <p>Mail: <input type="text" id="mail" placeholder="commit mail"/></p>
     <p><button id="saveConf">SAVE CONFIG</button></p>
