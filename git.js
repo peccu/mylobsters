@@ -1,4 +1,7 @@
 (function git(){
+  // localstorage - fs - git
+  // clone, pull, add, commit, push
+
   const initGit = () => {
     // window.fs = new LightningFS('fs', { wipe: true });
     window.fs = new LightningFS('fs');
@@ -56,14 +59,6 @@
         repoConf();
       }
     }
-    loadStorage(cb);
-  };
-
-  const loadStorage = async (cb) => {
-    // load database
-    console.log(await window.pfs.readdir(window.dir));
-    let json = await window.pfs.readFile(`${window.dir}/storage.json`, 'utf8');
-    localStorage.setItem('json', json);
     cb();
   };
 
@@ -79,6 +74,5 @@
   };
 
   window.repoConf = repoConf;
-  // window.initGit = initGit;
   window.cloneOrPullRepo = cloneOrPullRepo;
 }());

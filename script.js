@@ -15,7 +15,7 @@
 
   const init = () => {
     initEruda();
-    cloneOrPullRepo(initFromLocalStorage);
+    update(initFromLocalStorage);
   };
   init();
 
