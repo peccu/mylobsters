@@ -14,6 +14,10 @@
 
   const setDefault = (items) => items.map(e => Object.assign({}, defaultItem, e));
 
+  const setArticles = (articles) => {
+    localStorage.setItem('json', articles);
+  };
+
   const getArticles = () => {
     let json = JSON.parse(localStorage.getItem('json'));
     const items = setDefault(json.items);
@@ -22,4 +26,5 @@
   };
 
   window.getArticles = getArticles;
+  window.setArticles = setArticles;
 }());
