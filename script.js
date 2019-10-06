@@ -1,4 +1,15 @@
-(function(){
+import {update} from './api/store.js';
+import {initEruda} from './eruda.js';
+import {repoConf} from './git.js';
+
+const initButtons = () => {
+  document.getElementById('initRepo').addEventListener('click', ()=>{
+    update(()=>{});
+  });
+  document.getElementById('repoConf').addEventListener('click', repoConf);
+
+}
+
   const loadConf = attr => {
     return key => {
       const val = localStorage.getItem(key);
@@ -14,6 +25,7 @@
   };
 
   const init = () => {
+    initButtons();
     initEruda();
     update(initFromLocalStorage);
   };
@@ -48,5 +60,4 @@
     initFromLocalStorage();
     openUrl(url);
   };
-  window.addUrlOpen = addUrlOpen;
-}());
+  // window.addUrlOpen = addUrlOpen;

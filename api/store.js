@@ -1,9 +1,8 @@
-(function(){
-  // import git from './git.js';
+import {cloneOrPullRepo} from '../git.js';
   // localstorage - fs - git
   // update(pull), read, write, save(commit/push)
 
-  var update = (cb) => {
+  export const update = (cb) => {
     // git.cloneOrPullRepo(cb);
     cloneOrPullRepo(()=>{
       loadStorage(cb);
@@ -20,5 +19,4 @@
 
   // TODO move commit and push from script.js to here
 
-  window.update = update;
-}());
+  // window.update = update;

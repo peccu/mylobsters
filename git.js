@@ -1,4 +1,3 @@
-(function git(){
   // localstorage - fs - git
   // clone, pull, add, commit, push
 
@@ -34,7 +33,7 @@
     await window.git.clone(option);
   };
 
-  var cloneOrPullRepo = async (cb) => {
+  export const cloneOrPullRepo = async (cb) => {
     if(!window.dir){
       initGit();
     }
@@ -62,7 +61,7 @@
     cb();
   };
 
-  var repoConf = () => {
+  export const repoConf = () => {
     const script = document.createElement('script');
     script.type = 'module';
     script.src = './components/git_conf.js';
@@ -73,6 +72,5 @@
     document.body.appendChild(script);
   };
 
-  window.repoConf = repoConf;
-  window.cloneOrPullRepo = cloneOrPullRepo;
-}());
+  // window.repoConf = repoConf;
+  // window.cloneOrPullRepo = cloneOrPullRepo;

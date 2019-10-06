@@ -22,9 +22,9 @@ TODO:
     - git
     </pre>
 
-    <p><button onclick="start(); return false;">START</button></p>
-    <p><button onclick="cloneOrPullRepo(()=>{}); return false;">INIT REPO</button></p>
-    <p><button onclick="repoConf(); return false;">REPO CONFIG</button></p>
+    <p><button id="start"onclick="start(); return false;">START</button></p>
+    <p><button id="initRepo">INIT REPO</button></p>
+    <p><button id="repoConf">REPO CONFIG</button></p>
     <hr/>
 
     <pre id="jsonlabel"></pre>
@@ -99,13 +99,9 @@ TODO:
     </script>
     <script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
     <script src="https://unpkg.com/isomorphic-git"></script>
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script src="./eruda.js"></script>
-    <script src="./git.js"></script>
-    <script src="./api/store.js"></script>
     <script src="./toolbar.js"></script>
     <script src="./api/articles.js"></script>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
     <script src="./chfont.js"></script>
     <script type="module" src="./components/simple.js"></script>
     <super-span>star<span>green</span></super-span>
