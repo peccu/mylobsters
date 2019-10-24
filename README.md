@@ -44,3 +44,7 @@
   - add feeds/page
   - picking articles
   - reading w/ evaluation
+
+## memo
+- text classification https://cloud.google.com/natural-language/automl/docs/quickstart
+- url tagging https://www.tefter.io/
