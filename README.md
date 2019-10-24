@@ -48,3 +48,4 @@
 ## memo
 - text classification https://cloud.google.com/natural-language/automl/docs/quickstart
 - url tagging https://www.tefter.io/
+- article parser https://mercury.postlight.com/web-parser/
